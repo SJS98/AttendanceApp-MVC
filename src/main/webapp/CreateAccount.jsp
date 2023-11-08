@@ -1,0 +1,183 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Welcome to HRM</title>
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+	background: linear-gradient(5deg, skyblue 0%, skyblue 50%, lightgreen 50%,
+		lightgreen 100%);
+	height: 100vh;
+}
+
+nav {
+	position: absolute;
+	top: 50px;
+	left: 0;
+	height: 45px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav ul {
+	list-style: none;
+	display: flex;
+	width: 40%;
+	justify-content: space-evenly;
+	font-size: 18px;
+}
+
+nav ul li {
+	width: 70px;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	padding: 10px 20px;
+	background: #000;
+	border-radius: 3px;
+	color: #fff;
+	transition: .1s ease-in-out;
+	padding: 10px 20px;
+}
+
+nav ul li:hover {
+	background: #fff;
+	color: #000;
+	font-weight: bold;
+}
+
+nav span {
+	margin-left: 120px;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.loginform {
+	position: absolute;
+	top: 150px;
+	height: 450px;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.loginform form {
+	padding-top: 20px;
+	height: 390px;
+	width: 300px;
+	background: rgba(255, 255, 255, .5);
+	text-align: center;
+	box-shadow: 0 0 10px -7px;
+	border-radius: 4px;
+}
+
+.loginform form input, select, .loginform form input[type="button"],
+	.loginform form input[type="submit"] {
+	width: 250px;
+	height: 30px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+
+.loginform form input[type="email"], .loginform form input[type="password"],
+	.loginform form input[type="tel"], .loginform form input[type="text"] {
+	padding-left: 15px;
+}
+
+.loginform form input[type="button"], .loginform form input[type="submit"]
+	{
+	background: #000;
+	color: #fff;
+}
+
+.loginform form input[type="button"]:hover, .loginform form input[type="submit"]:hover
+	{
+	background: #fff;
+	color: #000;
+	font-weight: bold;
+}
+
+.loginform a {
+	color: #000;
+	position: absolute;
+	bottom: -10px;
+	left: 565px;
+}
+
+#msg-dialoge {
+	padding: 10px 15px;
+	font-weight: bold;
+	border-radius: 10px;
+	margin-top: 10px;
+	text-align: center;
+	box-shadow: 0 0 10px -8px black;
+}
+
+.msg-div {
+	position: absolute;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+</style>
+
+</head>
+<body>
+
+
+
+	<%
+	boolean isHRPresent = false;
+	%>
+
+	<div class="msg-div">
+		<span id="msg-dialoge"
+			style=" display:${msg == null ? 'none':'flex'} ;background: ${msg == null ? '' :msgType}">
+			${msg == null ? '' : msg} </span>
+	</div>
+
+	<nav>
+
+		<span>HRM</span>
+		<ul>
+
+			<li class="homepage" onclick="location.href='index.jsp'">Home</li>
+			<li class="hr" style="background-color: lightgray">Log In</li>
+			<li class="about">About</li>
+		</ul>
+
+	</nav>
+
+	<div class="loginform">
+		<form action="createaccount" method="post">
+			<h3>Create Account</h3>
+			<input type="text" name="username" placeholder="Full Name" required>
+			<input type="email" name="email" placeholder="Email" required>
+			<input type="password" name="password" placeholder="Password"
+				required> <input type="tel" name="phone" placeholder="Phone"
+				required> <select name="role" role="role">
+				<option value="HR" style="display: <%=isHRPresent ? "none" : ""%>">HR</option>
+				<option value="Manager">Manager</option>
+				<option value="Trainer">Trainer</option>
+			</select> <input type="submit" value="Create Account"> <input
+				type="button" value="Back"> <a href="Login.jsp">Already
+				have an account?</a>
+		</form>
+	</div>
+</body>
+</html>
